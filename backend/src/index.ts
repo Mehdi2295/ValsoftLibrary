@@ -24,7 +24,9 @@ initDatabase();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://valsoftminilibrary.online', 'https://www.valsoftminilibrary.online']
+    : process.env.CORS_ORIGIN || 'http://localhost:5173',
   credentials: true,
 }));
 app.use(morgan('dev'));
