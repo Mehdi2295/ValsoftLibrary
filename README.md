@@ -501,8 +501,7 @@ This project is licensed under the MIT License.
 
 ## Developer
 
-Built with  by [Your Name]
-
+Built with  by Mehdi Chekkaf using cursor
 ## Acknowledgments
 
 - React and the React team
