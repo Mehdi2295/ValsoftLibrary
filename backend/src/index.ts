@@ -16,7 +16,7 @@ import aiRoutes from './routes/ai';
 dotenv.config();
 
 const app = express();
-const PORT = Number(process.env.PORT) || 3001;
+const PORT = 3001;
 
 // Initialize database
 initDatabase();
@@ -24,15 +24,7 @@ initDatabase();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: (origin, callback) => {
-    const allowed = (process.env.CORS_ORIGIN || 'http://localhost:5173')
-      .split(',')
-      .map(o => o.trim());
-    if (!origin || allowed.includes('*') || allowed.includes(origin)) {
-      return callback(null, true);
-    }
-    return callback(new Error('Not allowed by CORS'));
-  },
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
   credentials: true,
 }));
 app.use(morgan('dev'));
@@ -66,7 +58,7 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📚 Library Management System API`);
 });
 
