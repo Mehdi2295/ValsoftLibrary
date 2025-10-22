@@ -413,6 +413,30 @@ ValsoftLibrary/
 
 ## Deployment
 
+### Deploy on Railway (Free)
+
+1) Push your repo to GitHub (already done).
+
+2) In Railway:
+- Create New Project → Deploy from GitHub → select this repo
+- Add variables under Project → Variables:
+  - `PORT=3001`
+  - `CORS_ORIGIN=https://yourdomain.com,https://your-railway-url.up.railway.app`
+  - `JWT_SECRET` (any strong value)
+  - `JWT_EXPIRES_IN=7d`
+
+3) Build and Start Commands are auto from `railway.json` and root scripts.
+
+4) Domain:
+- Railway → Settings → Custom Domain → add your domain
+- In your DNS provider, add a CNAME to Railway’s provided host
+
+5) Frontend API URL:
+- In Railway, add variable on the frontend service (or project):
+  - `VITE_API_URL=https://yourdomain.com` (no trailing slash)
+
+6) Re-deploy. Visit `https://yourdomain.com`.
+
 ### Backend Deployment
 
 1. Build the backend:
